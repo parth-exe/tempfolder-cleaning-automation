@@ -23,3 +23,20 @@ def ClearTemp():
     print(f"Deleted {count} files")
 
 
+def check_pc_health():
+    if ps.virtual_memory()[2] > 65:
+        print("Consider killing non-essential processes or restarting your PC")
+    if ps.cpu_percent(1) > 50:
+        print("Restarting your PC is advised. Unusual CPU usage.")
+
+def print_pc_health():
+    print("*"*15)
+    print(f"RAM usage: {ps.virtual_memory()[2]}%")
+    print(f"CPU count: {ps.cpu_count()}")
+    print(f"CPU usage: {ps.cpu_percent(1)}%")
+    print("*"*15)
+        
+    
+ClearTemp()
+print_pc_health()
+check_pc_health()
