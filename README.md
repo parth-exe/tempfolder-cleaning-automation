@@ -1,4 +1,4 @@
-## General info
+## Windows Disk Cleaning Automation
 This is a side project of mine involving automation in the operating system. The key features are
 * Temp folder clean
 * Download folder clean, files that are older than 30 days.
