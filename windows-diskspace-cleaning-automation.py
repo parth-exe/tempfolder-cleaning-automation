@@ -13,11 +13,9 @@ def ClearTemp():
         try:
             FILE_PATH = PATH + '\\' + file
             if os.path.isfile(FILE_PATH) and os.path.exists(FILE_PATH):
-                os.system(cmd + FILE_PATH + ' /F')
                 os.remove(FILE_PATH)
                 count += 1
             elif os.path.isdir(FILE_PATH) and os.path.exists(FILE_PATH):
-                os.system(cmd + FILE_PATH + ' /F')
                 shutil.rmtree(FILE_PATH)
                 count += 1
         except Exception:
@@ -70,3 +68,5 @@ CleanDownloads()
 EmptyRecycleBin()
 print_pc_health()
 check_pc_health()
+
+
