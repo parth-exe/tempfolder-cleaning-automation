@@ -7,7 +7,6 @@ import time
 def ClearTemp():
     PATH = f"C:\\Users\\admin\\AppData\\Local\\Temp"
     files = os.listdir(PATH)
-    cmd = 'TASKKILL'
     count = 0
     for file in files:
         try:
@@ -27,7 +26,7 @@ def check_pc_health():
         print("Consider killing non-essential processes or restarting your PC")
     if ps.cpu_percent(1) > 50:
         print("Restarting your PC is advised. Unusual CPU usage.")
-
+####################################################################################################################################################################################################
 def print_pc_health():
     print("*"*15)
     print(f"RAM usage: {ps.virtual_memory()[2]}%")
@@ -62,11 +61,13 @@ def CleanDownloads():
         pass
     print(f"{file_count} files were deleted and were older than 30 days.")
 ####################################################################################################################################################################################################           
+def main():
+    ClearTemp()
+    CleanDownloads()
+    EmptyRecycleBin()
+    print_pc_health()
+    check_pc_health()
+#################################################################################################################################################################################################### 
 
-ClearTemp()
-CleanDownloads()
-EmptyRecycleBin()
-print_pc_health()
-check_pc_health()
-
-
+if __name__ == '__main__':
+    main()
