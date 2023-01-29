@@ -47,7 +47,7 @@ def print_pc_health():
 def EmptyRecycleBin():
     try:
         winshell.recycle_bin().empty(confirm=False, show_progress=False, sound=False)
-        print("Recylce Bin emptied.")
+        print("Recycle Bin emptied.")
     except Exception:
         print("The bin is already empty.")
         pass
@@ -82,7 +82,7 @@ def main():
     print_pc_health()
     check_pc_health()
     end = time.time()
-    print(f"Execution time: {end - start - 1} seconds")
+    print(f"Execution time: {round(end - start - 1, 5)} seconds")
 #################################################################################################################################################################################################### 
 
 if __name__ == '__main__':
