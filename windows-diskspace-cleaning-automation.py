@@ -83,7 +83,7 @@ def main():
     print_pc_health()
     check_pc_health()
     end = time.time()
-    print(f"Execution time: {round(end - start - 2.1, 5)} seconds")
+    print(f"Execution time: {round(end - start - 2, 5)} seconds")
 #################################################################################################################################################################################################### 
 
 if __name__ == '__main__':
