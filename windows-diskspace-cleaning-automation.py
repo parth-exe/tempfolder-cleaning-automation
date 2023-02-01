@@ -12,18 +12,19 @@ def ClearTemp():
     for file in files:
         try:
             FILE_PATH = PATH + '\\' + file
-            if os.path.isfile(FILE_PATH) and os.path.exists(FILE_PATH):
-                if Exception:
-                    continue
-                size += os.path.getsize(FILE_PATH)
-                os.remove(FILE_PATH)
-                count += 1
-            elif os.path.isdir(FILE_PATH) and os.path.exists(FILE_PATH):
-                if Exception:
-                    continue
-                size += os.path.getsize(FILE_PATH)
-                shutil.rmtree(FILE_PATH)
-                count += 1
+            if os.path.exists(FILE_PATH):
+                if os.path.isfile(FILE_PATH):
+                    if Exception:
+                        continue
+                    size += os.path.getsize(FILE_PATH)
+                    os.remove(FILE_PATH)
+                    count += 1
+                elif os.path.isdir(FILE_PATH):
+                    if Exception:
+                        continue
+                    size += os.path.getsize(FILE_PATH)
+                    shutil.rmtree(FILE_PATH)
+                    count += 1
         except Exception:
             continue
     print("*"*15)
@@ -82,7 +83,7 @@ def main():
     print_pc_health()
     check_pc_health()
     end = time.time()
-    print(f"Execution time: {round(end - start - 1, 5)} seconds")
+    print(f"Execution time: {round(end - start - 2.1, 5)} seconds")
 #################################################################################################################################################################################################### 
 
 if __name__ == '__main__':
