@@ -3,9 +3,11 @@ import psutil as ps
 import shutil
 import winshell
 import time
+import re
 ############################################################################################################################################################################################## 
+user = re.split(r'\\', os.getcwd())
 def ClearTemp():
-    PATH = f"C:\\Users\\admin\\AppData\\Local\\Temp"
+    PATH = f"C:\\Users\\{user[2]}\\AppData\\Local\\Temp"
     files = os.listdir(PATH)
     count = 0
     size = 0
@@ -14,22 +16,19 @@ def ClearTemp():
             FILE_PATH = PATH + '\\' + file
             if os.path.exists(FILE_PATH):
                 if os.path.isfile(FILE_PATH):
-                    if Exception:
-                        continue
                     size += os.path.getsize(FILE_PATH)
                     os.remove(FILE_PATH)
                     count += 1
                 elif os.path.isdir(FILE_PATH):
-                    if Exception:
-                        continue
                     size += os.path.getsize(FILE_PATH)
                     shutil.rmtree(FILE_PATH)
                     count += 1
         except Exception:
+            size -= os.path.getsize(FILE_PATH)
             continue
     print("*"*15)
     print(f"Deleted {count} files from Temp")
-    print(f"{round(size / 1048576, 2)} MB files cleared from Temp Folder")
+    print(f"{round(size / 1048576, 4)} MB files cleared from Temp Folder")
     print("*"*15)
 ############################################################################################################################################################################################## 
 def check_pc_health():
@@ -54,7 +53,7 @@ def EmptyRecycleBin():
         pass
 ##############################################################################################################################################################################################        
 def CleanDownloads():
-    target_path = f"C:\\Users\\admin\\Downloads"
+    target_path = f"C:\\Users\\{user[2]}\\Downloads"
     files = os.listdir(target_path)
     sec_per_day = 86400
     number_of_days = 30
@@ -78,12 +77,18 @@ def CleanDownloads():
 def main():
     start = time.time()
     ClearTemp()
-    CleanDownloads()
+    inpt1 = time.time()
+    inp = input("Delete downloads older than 30 days? [y/n]: ")
+    if inp.lower() == 'y':
+        CleanDownloads()
+    else:
+        pass
+    inpt2 = time.time()
     EmptyRecycleBin()
     print_pc_health()
     check_pc_health()
     end = time.time()
-    print(f"Execution time: {round(end - start - 2, 5)} seconds")
+    print(f"Execution time: {round(end - start - 2 - (inpt2 - inpt1), 5)} seconds")
 #################################################################################################################################################################################################### 
 
 if __name__ == '__main__':
