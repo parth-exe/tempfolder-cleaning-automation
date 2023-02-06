@@ -7,6 +7,6 @@ This is a side project of mine involving automation in the operating system. The
 
 ## Setup
 ```
-The setup of this automation is really simple, all you have to do is run the requirements.py file and the dependencies will installed or get upgraded automatically.
+Run requirements.py file in the wdc-automation folder and you're done!
 
 ```
