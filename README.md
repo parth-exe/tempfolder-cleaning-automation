@@ -6,11 +6,7 @@ This is a side project of mine involving automation in the operating system. The
 * PC hardware stats and advisory when to restart PC or terminate unwanted processes.
 
 ## Setup
-Dependencies required to use this python file are:
-
 ```
-$ pip install psutil
-$ pip install winshell
-$ pip install pywin32
+The setup of this automation is really simple, all you have to do is run the requirements.py file and the dependencies will installed or get upgraded automatically.
 
 ```
