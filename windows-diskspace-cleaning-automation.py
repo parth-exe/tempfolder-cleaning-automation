@@ -5,7 +5,7 @@ import winshell
 import time
 import re
 ############################################################################################################################################################################################## 
-user = re.split(r'\\', os.getcwd())
+user = re.split(r'\\', os.getcwd()) # Getting the user name in the path. Example: C:\Users\USERNAME\Appdata\Local\Temp
 def ClearTemp():
     PATH = f"C:\\Users\\{user[2]}\\AppData\\Local\\Temp"
     files = os.listdir(PATH)
@@ -24,7 +24,7 @@ def ClearTemp():
                     shutil.rmtree(FILE_PATH)
                     count += 1
         except Exception:
-            size -= os.path.getsize(FILE_PATH)
+            size -= os.path.getsize(FILE_PATH) # Removing the size of the exception for correct memory clear.
             continue
     print("*"*15)
     print(f"Deleted {count} files from Temp")
@@ -64,7 +64,7 @@ def CleanDownloads():
         for file in files:
             target_file_path = target_path + '\\' + file
             file_age = os.stat(target_file_path).st_mtime
-            if file_age < time_now - (sec_per_day*number_of_days):
+            if file_age < time_now - (sec_per_day*number_of_days): 
                 size += os.path.getsize(target_file_path)
                 os.remove(target_file_path)
                 file_count += 1
@@ -72,7 +72,7 @@ def CleanDownloads():
         print("No files older than 30 days were found.")
         pass
     print(f"{file_count} files were deleted and were older than 30 days.")
-    print(f"{round(size / 1048576, 2)} MB files cleared from Downloads Folder")
+    print(f"{round(size / 1048576, 2)} MB files cleared from Downloads Folder") #Dividing size by 1048576 to get the answer in MB.
 ####################################################################################################################################################################################################           
 def main():
     start = time.time()
